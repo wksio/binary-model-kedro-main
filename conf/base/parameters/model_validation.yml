@@ -1,0 +1,53 @@
+# This is a boilerplate parameters config generated for pipeline 'model_validation'
+# using Kedro 0.18.9.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.18.9/kedro_project_setup/configuration.html#parameters
+backward_cv_split:
+  n_splits: 5
+  n_repeats: 5
+  random_state: 42
+  report_path: 'data/08_reporting/'
+  report_name: "cross_validation_backward_selection.txt"
+
+forward_cv_split:
+  n_splits: 5
+  n_repeats: 5
+  random_state: 42
+  report_path: 'data/08_reporting/'
+  report_name: "cross_validation_forward_selection.txt"
+
+backward_cv_tuned_split:
+  n_splits: 5
+  n_repeats: 5
+  random_state: 42
+  report_path: 'data/08_reporting/'
+  report_name: "cross_validation_tuned_backward_selection.txt"
+
+forward_cv_tuned_split:
+  n_splits: 5
+  n_repeats: 5
+  random_state: 42
+  report_path: 'data/08_reporting/'
+  report_name: "cross_validation_tuned_forward_selection.txt"
+
+hyper_params:
+  solver: ['newton-cg', 'lbfgs', 'liblinear']
+  penalty: [None, 'l1', 'l2', 'elasticnet']
+
+hyper_split:
+  n_splits: 10
+  n_repeats: 5
+  random_state: 42
+
+hyper_score_forward_report:
+  report_path: 'data/08_reporting/'
+  report_name: "hyper_score_forward_report.txt"
+
+hyper_score_backward_report:
+  report_path: 'data/08_reporting/'
+  report_name: "hyper_score_backward_report.txt"
+
+comparison_report:
+  report_path: 'data/08_reporting/'
+  report_name: "final_model_comparison.xlsx"

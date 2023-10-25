@@ -1,0 +1,8 @@
+# This is a boilerplate parameters config generated for pipeline 'data_exploratory'
+# using Kedro 0.18.8.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.18.8/kedro_project_setup/configuration.html#parameters
+report_path: 'data/08_reporting/'
+report_name_var_main: "var_report_main_table.xlsx"
+exclude: []

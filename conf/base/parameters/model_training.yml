@@ -1,0 +1,27 @@
+# This is a boilerplate parameters config generated for pipeline 'model_training'
+# using Kedro 0.18.8.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.18.8/kedro_project_setup/configuration.html#parameters
+
+split_param: 
+  test_size: 0.33
+  random_state: 42
+
+logistic_params:
+  solver: "lbfgs"
+  max_iter: 10000
+  C: 1
+  penalty: 
+
+model_report_path: "data/08_reporting"
+
+logistic_report_name: "logistic_model_report.txt"
+
+logistic_forward_report_name: "logistic_forward_model_report.txt"
+
+logistic_backward_report_name: "logistic_backward_model_report.txt"
+
+logistic_backward_features_report: "logistic_backward_features_report.xlsx"
+
+logistic_forward_features_report: "logistic_forward_features_report.xlsx"

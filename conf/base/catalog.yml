@@ -1,0 +1,221 @@
+# Here you can define all your data sets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://docs.kedro.org/en/stable/data/data_catalog.html
+data_r:
+  type: pandas.CSVDataSet
+  filepath: https://raw.githubusercontent.com/kang20006/divorce-data-project/main/divorce.csv
+  load_args:
+    sep: ";"
+    na_values: ["#NA", NA]
+  save_args:
+    index: False
+    date_format: "%Y-%m-%d %H:%M"
+    decimal: .
+
+main_df_numerical:
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/main_df_numerical.pq
+  layer: data_exploratory
+
+main_df_object:
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/main_df_object.pq
+  layer: data_exploratory
+
+main_num_info_df:
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/main_num_info_df.pq
+  layer: data_exploratory
+
+main_char_info_df:
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/main_char_info_df.pq
+  layer: data_exploratory
+
+main_df_shape:
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/main_df_shape.pq
+  layer: data_exploratory
+
+main_target_info_df:
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/main_target_info_df.pq
+  layer: data_exploratory
+
+ohe_main:
+  type: pandas.ParquetDataSet
+  filepath: data/03_primary/ohe_main.pq
+  layer: data_cleansing_one_hot_encoding
+
+ohe_df_dummy:
+  type: pandas.ParquetDataSet
+  filepath: data/03_primary/ohe_df_dummy.pq
+  layer: data_cleansing_one_hot_encoding
+
+smt_main:
+  type: pandas.ParquetDataSet
+  filepath: data/03_primary/smt_main.pq
+  layer: data_cleansing_resampling
+
+rmo_main:
+  type: pandas.ParquetDataSet
+  filepath: data/03_primary/rmo_main.pq
+  layer: data_cleansing_remove_outlier
+
+smt_main_df_numerical:
+  type: pandas.ParquetDataSet
+  filepath: data/03_primary/smt_main_df_numerical.pq
+  layer: data_cleansing_resampling
+
+smt_main_df_object:
+  type: pandas.ParquetDataSet
+  filepath: data/03_primary/smt_main_df_object.pq
+  layer: data_cleansing_resampling
+
+smt_main_num_info_df:
+  type: pandas.ParquetDataSet
+  filepath: data/03_primary/smt_main_num_info_df.pq
+  layer: data_cleansing_resampling
+
+smt_main_char_info_df:
+  type: pandas.ParquetDataSet
+  filepath: data/03_primary/smt_main_char_info_df.pq
+  layer: data_cleansing_resampling
+
+smt_main_df_shape:
+  type: pandas.ParquetDataSet
+  filepath: data/03_primary/smt_main_df_shape.pq
+  layer: data_cleansing_resampling
+
+smt_main_target_info_df:
+  type: pandas.ParquetDataSet
+  filepath: data/03_primary/smt_main_target_info_df.pq
+  layer: data_cleansing_resampling
+
+iv_df:
+  type: pandas.ParquetDataSet
+  filepath: data/04_feature/iv_df.pq
+  layer: features_selection_information_var
+
+woe_df:
+  type: pandas.ParquetDataSet
+  filepath: data/04_feature/woe_df.pq
+  layer: features_selection_information_var
+
+iv_selected:
+  type: pickle.PickleDataSet
+  filepath: data/04_feature/iv_selected.pickle
+  layer: features_selection_information_var
+
+selectfrommodel_rf_selected:
+  type: pickle.PickleDataSet
+  filepath: data/04_feature/selectfrommodel_rf_selected.pickle
+  layer: features_selection_random_forest
+
+combine_selected:
+  type: pickle.PickleDataSet
+  filepath: data/04_feature/combine_selected.pickle
+  layer: features_selection_combine
+
+corr_matrix:
+  type: pickle.PickleDataSet
+  filepath: data/04_feature/corr_matrix.pickle
+  layer: features_selection_correlation
+
+corr_selected:
+  type: pickle.PickleDataSet
+  filepath: data/04_feature/corr_selected.pickle
+  layer: features_selection_correlation
+
+vif_df:
+  type: pandas.ParquetDataSet
+  filepath: data/04_feature/vif_df.pq
+  layer: features_selection_vif
+
+final_main:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/final_main.pq
+  layer: features_selection_output
+
+X_train:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_train.pq
+  layer: model_training
+
+X_test:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/X_test.pq
+  layer: model_training
+
+X_test_sfsb:
+  type: pickle.PickleDataSet
+  filepath: data/05_model_input/X_test_sfsb.pickle
+  layer: model_training
+
+X_test_sfsf:
+  type: pickle.PickleDataSet
+  filepath: data/05_model_input/X_test_sfsf.pickle
+  layer: model_training
+  
+y_train:
+  type: pickle.PickleDataSet
+  filepath: data/05_model_input/y_train.pickle
+  layer: model_training
+
+y_test:
+  type: pickle.PickleDataSet
+  filepath: data/05_model_input/y_test.pickle
+  layer: model_training
+
+logistic_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/logistic_model.pickle
+  versioned: true
+  layer: model_training
+
+logistic_model_forward:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/logistic_model_forward.pickle
+  versioned: true
+  layer: model_training
+
+logistic_model_backward:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/logistic_model_backward.pickle
+  versioned: true
+  layer: model_training
+
+logistic_model_forward_p:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/logistic_model_forward_p.pickle
+  versioned: true
+  layer: model_training
+
+logistic_model_backward_p:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/logistic_model_backward_p.pickle
+  versioned: true
+  layer: model_training
+
+hyper_score_forward:
+  type: pickle.PickleDataSet
+  filepath: data/07_model_output/hyper_score_forward.pickle
+  layer: model_validation
+
+hyper_score_backward:
+  type: pickle.PickleDataSet
+  filepath: data/07_model_output/hyper_score_backward.pickle
+  layer: model_validation
+
+final_model_forward:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/final_model_forward.pickle
+  versioned: true
+  layer: model_validation
+
+final_model_backward:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/final_model_backward.pickle
+  versioned: true
+  layer: model_validation
